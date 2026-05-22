@@ -21,7 +21,6 @@ public class VBoxControles extends VBox {
         List<Integer> chiffres = new ArrayList<>();
         for (int i=0; i<9; i++) { chiffres.add(i); }
 
-        ToggleGroup cases = new ToggleGroup();
         for (int x=0; x<3; x++){
             for (int y=0; y<3; y++){
 
@@ -33,5 +32,8 @@ public class VBoxControles extends VBox {
                 btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(event));
             }
         }
+        Button btnValider = new Button("Valider");
+        gridPaneBoutons.add(btnValider, 0, 3, 3, 1);
+        btnValider.setOnAction(event -> HBoxRoot.getControleur().valider());
     }
 }

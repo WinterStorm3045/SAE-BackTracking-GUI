@@ -18,4 +18,8 @@ public class Controleur {
     public void ajouterNumero(Event event){
 
     }
+
+    public void valider(){
+
+    }
 }

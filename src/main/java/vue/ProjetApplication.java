@@ -10,7 +10,7 @@ public class ProjetApplication extends Application {
     @Override
     public void start(Stage stage) {
         HBoxRoot root = new HBoxRoot();
-        Scene scene = new Scene(root, 900, 400);
+        Scene scene = new Scene(root, 800, 500);
 
         File cssFile = new File("css/style.css");
         scene.getStylesheets().add(cssFile.toURI().toString());

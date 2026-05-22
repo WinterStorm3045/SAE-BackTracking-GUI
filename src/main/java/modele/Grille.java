@@ -19,40 +19,14 @@ public class Grille {
 
             while (!conditionsValides){
                 nbAleatoire = (int)(Math.random()*9);
-                conditionsValides = true;
-                System.out.println(nbAleatoire);
-
-                // Boucler sur la colone
-                int colone = i % 9;
-                for (int y=0; y<9; y++){
-                    Integer valeur = getCase(grilleDepart, colone, y);
-                    conditionsValides = (valeur != nbAleatoire || valeur == null);
-                    System.out.println(valeur != nbAleatoire || valeur == null);
-                }
-
-                // Boucler sur la ligne
-                int ligne = i / 9;
-                for (int x=0; x<9; x++){
-                    Integer valeur = getCase(grilleDepart, x, ligne);
-                    conditionsValides = (valeur != nbAleatoire || valeur == null);
-                    System.out.println(valeur != nbAleatoire || valeur == null);
-                }
-
-                // Boucler dans les carrés
-                for (int x=colone%3; x<9; x+=3){
-                    for (int y=ligne%3; y<9; y+=3){
-                        Integer valeur = getCase(grilleDepart, x, y);
-                        conditionsValides = (valeur != nbAleatoire || valeur == null);
-                        System.out.println(valeur != nbAleatoire || valeur == null);
-                    }
-                }
+                conditionsValides = verifierConditions(i, nbAleatoire);
             }
             grilleDepart[i] = nbAleatoire;
         }
 
         System.out.println("Grille départ : " + Arrays.toString(grilleDepart));
 
-        grilleJoueur = grilleDepart;
+        grilleJoueur = grilleDepart.clone();
         for (int i=0; i<81; i++){
             float test = (float)Math.random();
             if (test < difficulte){
@@ -62,6 +36,41 @@ public class Grille {
         System.out.println("Grille joueur : " + Arrays.toString(grilleDepart));
     }
 
+
+
+    private boolean verifierConditions(int i, Integer nbAleatoire){
+        // Boucler sur la colone
+        int colone = i % 9;
+        for (int y=0; y<9; y++){
+            Integer valeur = getCase(grilleDepart, colone, y);
+            if (valeur == nbAleatoire) return false;
+        }
+
+        // Boucler sur la ligne
+        int ligne = i / 9;
+        for (int x=0; x<9; x++){
+            Integer valeur = getCase(grilleDepart, x, ligne);
+            if (valeur == nbAleatoire) return false;
+        }
+
+        // Boucler dans les autres carrés
+        for (int x=colone%3; x<9; x+=3){
+            for (int y=ligne%3; y<9; y+=3){
+                Integer valeur = getCase(grilleDepart, x, y);
+                if (valeur == nbAleatoire) return false;
+            }
+        }
+
+        // Boucler dans les carrés
+        for (int x=colone-colone%3; x<3; x++){
+            for (int y=ligne-ligne%3; y<3; y++){
+                Integer valeur = getCase(grilleDepart, x, y);
+                if (valeur == nbAleatoire) return false;
+            }
+        }
+        System.out.println("valide");
+        return true;
+    }
 
     public void setCase(Integer[] grille, int x, int y, int chiffre){
         if (x >= 0 && x < 9 && y >= 0 && y < 9){
@@ -77,7 +86,7 @@ public class Grille {
                 return grille[index];
             }
         }
-        return Integer.MIN_VALUE;
+        return null;
     }
 
     public Integer[] getGrilleDepart(){ return grilleDepart; }

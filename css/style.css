@@ -3,12 +3,19 @@
     -fx-background-color: white;
 }
 
-.label{
-    -fx-text-fill: #4682b4;
-    -fx-font-size: 1.5em;
-    -fx-font-weight: bold;
+.grille-button {
+    -fx-min-width: 40px;
+    -fx-max-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
 }
 
-.radioButton{
-    -
+.grille-label {
+    -fx-min-width: 40px;
+    -fx-max-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-alignment: center; /* Pr centrer le chiffre dans la case */
+    -fx-border-color: lightgray;
+    -fx-border-width: 1px;
 }
