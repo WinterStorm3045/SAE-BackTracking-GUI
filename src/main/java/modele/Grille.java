@@ -13,23 +13,41 @@ public class Grille {
         grilleDepart = new Integer[81];
         this.difficulte = difficulte;
 
-
-        for (int x=0; x<9; x++){
-            // -------------------- Debut backtracking --------------------
-
+        for (int i=0; i<81; i++){
             boolean conditionsValides = false;
+            Integer nbAleatoire = null;
+
             while (!conditionsValides){
+                nbAleatoire = (int)(Math.random()*9);
+                conditionsValides = true;
+                System.out.println(nbAleatoire);
 
-                List<Integer> chiffres = new ArrayList<>();
-                for (int i=0; i<9; i++) { chiffres.add(i); }
-
+                // Boucler sur la colone
+                int colone = i % 9;
                 for (int y=0; y<9; y++){
-                    int indexAleatoire = (int)(Math.random() * chiffres.size());
-                    int chiffre = chiffres.remove(indexAleatoire);
-                    setCase(grilleDepart, x, y, chiffre);
+                    Integer valeur = getCase(grilleDepart, colone, y);
+                    conditionsValides = (valeur != nbAleatoire || valeur == null);
+                    System.out.println(valeur != nbAleatoire || valeur == null);
+                }
+
+                // Boucler sur la ligne
+                int ligne = i / 9;
+                for (int x=0; x<9; x++){
+                    Integer valeur = getCase(grilleDepart, x, ligne);
+                    conditionsValides = (valeur != nbAleatoire || valeur == null);
+                    System.out.println(valeur != nbAleatoire || valeur == null);
+                }
+
+                // Boucler dans les carrés
+                for (int x=colone%3; x<9; x+=3){
+                    for (int y=ligne%3; y<9; y+=3){
+                        Integer valeur = getCase(grilleDepart, x, y);
+                        conditionsValides = (valeur != nbAleatoire || valeur == null);
+                        System.out.println(valeur != nbAleatoire || valeur == null);
+                    }
                 }
             }
-            // -------------------- Fin backtracking --------------------
+            grilleDepart[i] = nbAleatoire;
         }
 
         System.out.println("Grille départ : " + Arrays.toString(grilleDepart));
