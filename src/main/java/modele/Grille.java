@@ -29,34 +29,22 @@ public class Grille {
 
 
     private Integer[] genererGrille(int index, Integer[] grille) {
-        // Condition d'arrêt : si on a rempli les 81 cases, on a fini
-        if (index == 81) {
-            return grille;
-        }
+        if (index == 81) { return grille; }
 
-        // Liste des chiffres possibles (1 à 9)
         List<Integer> nombres = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        java.util.Collections.shuffle(nombres); // Mélange pour avoir une grille différente
+        java.util.Collections.shuffle(nombres);
 
         for (Integer nbAleatoire : nombres) {
-            // On vérifie si le chiffre est valide à cette position
             if (verifierConditions(index, nbAleatoire, grille)) {
 
-                // On crée une copie pour la branche actuelle
                 Integer[] nouvelleGrille = grille.clone();
                 nouvelleGrille[index] = nbAleatoire;
 
-                // Appel récursif
                 Integer[] resultat = genererGrille(index + 1, nouvelleGrille);
 
-                // Si le résultat n'est pas null, on a trouvé une solution complète
-                if (resultat != null) {
-                    return resultat;
-                }
+                if (resultat != null) { return resultat; }
             }
         }
-
-        // Si aucune valeur ne fonctionne, on retourne null (backtrack)
         return null;
     }
 
@@ -91,15 +79,18 @@ public class Grille {
         return true;
     }
 
-
-    public void setCase(Integer[] grille, int x, int y, int chiffre){
+    public void setCaseDepart(int x, int y, int valeur) { setCase(grilleDepart, x, y, valeur); }
+    public void setCaseJoueur(int x, int y, int valeur) { setCase(grilleJoueur, x, y, valeur); }
+    private void setCase(Integer[] grille, int x, int y, int valeur){
         if (x >= 0 && x < 9 && y >= 0 && y < 9){
             int index = y * 9 + x;
-            grille[index] = chiffre;
+            grille[index] = valeur;
         }
     }
 
-    public Integer getCase(Integer[] grille, int x, int y){
+    public Integer getCaseDepart(int x, int y){ return getCase(grilleDepart, x, y); }
+    public Integer getCaseJoueur(int x, int y){ return getCase(grilleJoueur, x, y); }
+    private Integer getCase(Integer[] grille, int x, int y){
         if (x >= 0 && x < 9 && y >= 0 && y < 9){
             int index = y * 9 + x;
             if (grille[index] != null){

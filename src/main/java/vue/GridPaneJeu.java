@@ -21,26 +21,36 @@ public class GridPaneJeu extends GridPane {
         for (int x=0; x<9; x++){
             for (int y=0; y<9; y++){
 
+                int posX = x; //obligé sinon jpp appeler le controloeur avec x et y
+                int posY = y;
+
                 // Pr rajouter une séparation entre les carrés
-                Integer posX = x + x/3;
-                Integer posY = y + y/3;
+                int posGrilleX = x + x/3;
+                int posGrilleY = y + y/3;
 
                 // Valeurs manquantes
                 if (valeurs[y*9+x] == null){
                     ToggleButton btn = new ToggleButton("");
                     btn.setToggleGroup(cases);
-                    btn.setUserData(new Pair<>(x, y));
-                    this.add(btn, posX, posY, 1, 1);
-                    btn.setOnAction(event -> HBoxRoot.getControleur().setPosition(event));
+                    this.add(btn, posGrilleX, posGrilleY, 1, 1);
+                    btn.setOnAction(event -> HBoxRoot.getControleur().setPosition(posX, posY));
                     btn.getStyleClass().add("grille-button");
                 }
+
                 // Valeurs déja présentes
                 else {
                     Label label = new Label(valeurs[y*9+x].toString());
-                    label.setUserData(new Pair<>(x, y));
-                    this.add(label, posX, posY, 1, 1);
+                    this.add(label, posGrilleX, posGrilleY, 1, 1);
                     label.getStyleClass().add("grille-label");
                 }
+            }
+        }
+    }
+
+    public void update(Integer[] grille){
+        for (int i=0; i<81; i++){
+            if (grille[i] != null && this.getChildren().get(i) instanceof ToggleButton) {
+                ((ToggleButton)this.getChildren().get(i)).setText(grille[i].toString());
             }
         }
     }

@@ -29,7 +29,7 @@ public class VBoxControles extends VBox {
                 Button btn = new Button(numero.toString());
                 btn.setUserData(numero);
                 gridPaneBoutons.add(btn, x, y, 1, 1);
-                btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(event));
+                btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(numero));
             }
         }
         Button btnValider = new Button("Valider");

@@ -5,9 +5,9 @@ import controleur.Controleur;
 import javafx.scene.layout.HBox;
 
 public class HBoxRoot extends HBox {
+    private static Grille modeleGrille;
     private static GridPaneJeu vueGrille;
     private static VBoxControles controles;
-    private static Grille modeleGrille;
     private static Controleur controleur;
 
     public HBoxRoot() {
@@ -22,6 +22,7 @@ public class HBoxRoot extends HBox {
     }
 
     // Accesseurs
+    public static Grille getModeleGrille() { return modeleGrille; }
     public static GridPaneJeu getVueGrille() { return vueGrille; }
     public static VBoxControles getControles() { return controles; }
     public static Controleur getControleur() { return controleur; }
