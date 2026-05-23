@@ -1,11 +1,8 @@
 package vue;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;

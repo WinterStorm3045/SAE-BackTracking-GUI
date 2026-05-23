@@ -13,13 +13,13 @@ public class GridPaneJeu extends GridPane {
 
     public GridPaneJeu(Integer[] valeurs){
         this.setPadding(new Insets(10, 10, 10, 10));
-        this.setHgap(1);
-        this.setVgap(1);
+        this.setHgap(4);
+        this.setVgap(4);
 
         ToggleGroup cases = new ToggleGroup();
 
-        for (int x=0; x<9; x++){
-            for (int y=0; y<9; y++){
+        for (int y=0; y<9; y++){
+            for (int x=0; x<9; x++){
 
                 int posX = x; //obligé sinon jpp appeler le controloeur avec x et y
                 int posY = y;

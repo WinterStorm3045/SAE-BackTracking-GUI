@@ -8,6 +8,10 @@
     -fx-max-width: 40px;
     -fx-min-height: 40px;
     -fx-max-height: 40px;
+
+    -fx-border-color: darkblue;
+    -fx-border-width: 1px;
+    -fx-border-radius: 0px;
 }
 
 .grille-label {
@@ -16,6 +20,10 @@
     -fx-min-height: 40px;
     -fx-max-height: 40px;
     -fx-alignment: center; /* Pr centrer le chiffre dans la case */
-    -fx-border-color: lightgray;
+
+    -fx-border-color: darkblue;
     -fx-border-width: 1px;
+    -fx-border-radius: 0px;
 }
+
+.gridPPane
