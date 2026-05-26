@@ -16,7 +16,6 @@ public class HBoxRoot extends HBox {
         controles = new VBoxControles();
         controleur = new Controleur();
 
-        this.setPadding(new Insets(15));
         this.setSpacing(20);
         this.getChildren().addAll(vueGrille, controles);
     }

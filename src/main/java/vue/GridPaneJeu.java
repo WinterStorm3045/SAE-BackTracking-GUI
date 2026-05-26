@@ -12,7 +12,7 @@ import javafx.util.*;
 public class GridPaneJeu extends GridPane {
 
     public GridPaneJeu(Integer[] valeurs){
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.getStyleClass().add("grille");
         this.setHgap(4);
         this.setVgap(4);
 
