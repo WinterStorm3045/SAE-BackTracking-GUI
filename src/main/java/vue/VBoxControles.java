@@ -3,12 +3,14 @@ package vue;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VBoxControles extends VBox {
     private GridPane gridPaneBoutons;
+    private HBox hBoxValidation;
 
 
     public VBoxControles(){
@@ -31,15 +33,18 @@ public class VBoxControles extends VBox {
                 btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(numero));
             }
         }
-
-        Button btn0 = new Button("0");
-        btn0.setUserData(0);
-        gridPaneBoutons.add(btn0, 0, 3, 1, 1);
-        btn0.getStyleClass().add("controle-button");
-        btn0.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(0));
+        
+        hBoxValidation = new HBox();
+        this.getChildren().add(hBoxValidation);
+        
+        Button btnAide = new Button("Aide");
+        hBoxValidation.getChildren().add(btnAide);
+        btnAide.getStyleClass().add("controle-button");
+        btnAide.getStyleClass().add("valider-button");
+        btnAide.setOnAction(event -> HBoxRoot.getControleur().solution());
 
         Button btnValider = new Button("Valider");
-        gridPaneBoutons.add(btnValider, 1, 3, 2, 1);
+        hBoxValidation.getChildren().add(btnValider);
         btnValider.getStyleClass().add("controle-button");
         btnValider.getStyleClass().add("valider-button");
         btnValider.setOnAction(event -> HBoxRoot.getControleur().valider());

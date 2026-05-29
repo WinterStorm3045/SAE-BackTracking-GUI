@@ -33,4 +33,9 @@ public class Controleur {
     public void valider(){
 
     }
+
+    public void solution(){
+        Integer[] grille = modeleGrille.getGrilleDepart();
+        vueGrille.update(grille);
+    }
 }
