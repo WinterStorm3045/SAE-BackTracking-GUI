@@ -11,7 +11,7 @@ public class HBoxRoot extends HBox {
     private static Controleur controleur;
 
     public HBoxRoot() {
-        modeleGrille = new Grille(0.6f);
+        modeleGrille = new Grille(0.5f);
         vueGrille = new GridPaneJeu(modeleGrille.getGrilleJoueur());
         controles = new VBoxControles();
         controleur = new Controleur();

@@ -93,9 +93,7 @@ public class Grille {
     private Integer getCase(Integer[] grille, int x, int y){
         if (x >= 0 && x < 9 && y >= 0 && y < 9){
             int index = y * 9 + x;
-            if (grille[index] != null){
-                return grille[index];
-            }
+            return grille[index];
         }
         return null;
     }
