@@ -41,8 +41,6 @@ public class Controleur {
         boolean[] grilleValide = new boolean[81];
 
         for (int i=0; i<81; i++){
-            System.out.println(grilleDepart[i]);
-            System.out.println(grilleJoueur[i]);
             if (grilleJoueur[i] == grilleDepart[i]){
                 grilleValide[i] = true;
             } else {
