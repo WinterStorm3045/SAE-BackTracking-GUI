@@ -31,6 +31,13 @@
     -fx-border-width: 1;
 }
 
+.valide{
+    -fx-background-color: #55FF55 !important;
+}
+.invalide{
+    -fx-background-color: #FF5555 !important;
+}
+
 
 
 .grille-label {

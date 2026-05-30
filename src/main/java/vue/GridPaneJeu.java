@@ -47,10 +47,25 @@ public class GridPaneJeu extends GridPane {
         }
     }
 
-    public void update(Integer[] grille){
+    public void updateValeurs(Integer[] grille){
         for (int i=0; i<81; i++){
             if (grille[i] != null && this.getChildren().get(i) instanceof ToggleButton) {
                 ((ToggleButton)this.getChildren().get(i)).setText(grille[i].toString());
+            }
+        }
+    }
+
+    public void updateCouleurs(boolean[] grille){
+        for (int i=0; i<81; i++){
+
+            if (this.getChildren().get(i).getStyleClass().size() == 3) {
+                this.getChildren().get(i).getStyleClass().remove(2);
+            }
+
+            if (grille[i]){
+                this.getChildren().get(i).getStyleClass().add("valide");
+            } else if (!grille[i]){
+                this.getChildren().get(i).getStyleClass().add("invalide");
             }
         }
     }

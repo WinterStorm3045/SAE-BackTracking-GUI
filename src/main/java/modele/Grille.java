@@ -24,7 +24,7 @@ public class Grille {
                 grilleJoueur[i] = null;
             }
         }
-        System.out.println("Grille joueur : " + Arrays.toString(grilleDepart));
+        System.out.println("Grille joueur : " + Arrays.toString(grilleJoueur));
     }
 
 

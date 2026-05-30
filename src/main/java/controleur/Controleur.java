@@ -27,15 +27,34 @@ public class Controleur {
 
     public void ajouterNumero(Integer numero){
         modeleGrille.setCaseJoueur(posX, posY, numero);
-        vueGrille.update(modeleGrille.getGrilleJoueur());
+        vueGrille.updateValeurs(modeleGrille.getGrilleJoueur());
     }
 
     public void valider(){
+        Integer[] grilleJoueur = modeleGrille.getGrilleJoueur();
+        /*for (int i=0; i<81; i++){
+            if (grilleJoueur[i] == null) return;
+        }*/
 
+
+        Integer[] grilleDepart = modeleGrille.getGrilleDepart();
+        boolean[] grilleValide = new boolean[81];
+
+        for (int i=0; i<81; i++){
+            System.out.println(grilleDepart[i]);
+            System.out.println(grilleJoueur[i]);
+            if (grilleJoueur[i] == grilleDepart[i]){
+                grilleValide[i] = true;
+            } else {
+                grilleValide[i] = false;
+            }
+        }
+
+        vueGrille.updateCouleurs(grilleValide);
     }
 
     public void solution(){
         Integer[] grille = modeleGrille.getGrilleDepart();
-        vueGrille.update(grille);
+        vueGrille.updateValeurs(grille);
     }
 }
