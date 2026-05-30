@@ -1,41 +1,83 @@
 .root{
     -fx-padding: 15;
-    -fx-background-color: white;
+    -fx-background-color: #CCCCEE;
 }
 
-.grille-valide {
-    -fx-text-fill: #e7d32; /* Texte vert */
-    -fx-background-color: ##05702B; /* Fond vert clair */
-    -fx-border-color: #2e7d32;
-}
-.grille-button {
+
+
+.grille * {
     -fx-min-width: 40px;
     -fx-max-width: 40px;
     -fx-min-height: 40px;
     -fx-max-height: 40px;
+}
 
-    -fx-border-color: darkblue;
-    -fx-border-width: 1px;
+
+
+.grille-button {
+    -fx-background-color: #FFFFFF;
+
+    -fx-border-width: 0px;
+    -fx-background-radius: 0px;
     -fx-border-radius: 0px;
+
+    -fx-font-size: 20;
+}
+.grille-button:hover {
+    -fx-background-color: #DDFFDD;
+}
+.grille-button:selected {
+    -fx-border-color: #222222;
+    -fx-border-width: 1;
 }
 
-.grille-button.grille-erreur {
-    -fx-text-fill: #d32f2f; /* Texte rouge */
-    -fx-background-color: #ffebee; /* Fond rose pour alerter */
-    -fx-border-color: #d32f2f; /* Bordure rouge */
+.valide{
+    -fx-background-color: #55FF55 !important;
 }
+.invalide{
+    -fx-background-color: #FF5555 !important;
+}
+
 
 
 .grille-label {
-    -fx-min-width: 40px;
-    -fx-max-width: 40px;
-    -fx-min-height: 40px;
-    -fx-max-height: 40px;
-    -fx-alignment: center; /* Pr centrer le chiffre dans la case */
+    -fx-background-color: #EEEEEE;
 
-    -fx-border-color: darkblue;
-    -fx-border-width: 1px;
+    -fx-border-width: 0px;
     -fx-border-radius: 0px;
+
+    -fx-alignment: center; /* Pr centrer le chiffre dans la case */
+    -fx-font-size: 20;
 }
 
-.gridPPane
+
+
+
+.controles {
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 4px;
+    -fx-border-radius: 0px;
+
+    -fx-background-color: #C0C0E0;
+}
+.controle-button {
+    -fx-min-width: 90px;
+    -fx-max-width: 90px;
+    -fx-min-height: 90px;
+    -fx-max-height: 90px;
+
+    -fx-background-color: #C0C0E0;
+
+    -fx-border-width: 0px;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+
+    -fx-font-size: 30;
+}
+.controle-button:hover {
+    -fx-background-color: #B0B0D0;
+}
+.valider-button {
+    -fx-min-width: 135px !important;
+    -fx-max-width: 135px !important;
+}

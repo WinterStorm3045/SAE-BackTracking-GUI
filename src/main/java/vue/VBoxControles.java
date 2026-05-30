@@ -3,24 +3,23 @@ package vue;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VBoxControles extends VBox {
     private GridPane gridPaneBoutons;
-    private Button btnValider;
-    private Button btnSolution;
+    private HBox hBoxValidation;
+
 
     public VBoxControles(){
         gridPaneBoutons = new GridPane();
-        this.btnValider = new Button("Vaider");
-        this.btnSolution = new Button("Solution");
-
+        this.getStyleClass().add("controles");
         this.getChildren().add(gridPaneBoutons);
 
         List<Integer> chiffres = new ArrayList<>();
-        for (int i=1; i<10; i++) { chiffres.add(i); }
+        for (int i=9; i>0; i--) { chiffres.add(i); }
 
         for (int x=0; x<3; x++){
             for (int y=0; y<3; y++){
@@ -30,21 +29,24 @@ public class VBoxControles extends VBox {
                 Button btn = new Button(numero.toString());
                 btn.setUserData(numero);
                 gridPaneBoutons.add(btn, x, y, 1, 1);
+                btn.getStyleClass().add("controle-button");
                 btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(numero));
             }
         }
-        gridPaneBoutons.add(btnValider, 0, 3, 3, 1);
-        gridPaneBoutons.add(btnSolution,4,3,3,1);
-        btnValider.setOnAction(event -> {
-            HBoxRoot.getControleur().lancerValidation();
-        });
-        btnSolution.setOnAction(event -> {
-            HBoxRoot.getControleur().afficherSolution();
-        });
-        ;
+        
+        hBoxValidation = new HBox();
+        this.getChildren().add(hBoxValidation);
+        
+        Button btnAide = new Button("Aide");
+        hBoxValidation.getChildren().add(btnAide);
+        btnAide.getStyleClass().add("controle-button");
+        btnAide.getStyleClass().add("valider-button");
+        btnAide.setOnAction(event -> HBoxRoot.getControleur().solution());
 
-    }
-    public Button getBtnValider() {
-        return this.btnValider; // Permet de récupérer le bouton pour changer son texte
+        Button btnValider = new Button("Valider");
+        hBoxValidation.getChildren().add(btnValider);
+        btnValider.getStyleClass().add("controle-button");
+        btnValider.getStyleClass().add("valider-button");
+        btnValider.setOnAction(event -> HBoxRoot.getControleur().valider());
     }
 }
