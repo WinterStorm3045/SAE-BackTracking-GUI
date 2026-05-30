@@ -3,6 +3,11 @@
     -fx-background-color: white;
 }
 
+.grille-valide {
+    -fx-text-fill: #e7d32; /* Texte vert */
+    -fx-background-color: ##05702B; /* Fond vert clair */
+    -fx-border-color: #2e7d32;
+}
 .grille-button {
     -fx-min-width: 40px;
     -fx-max-width: 40px;
@@ -13,6 +18,13 @@
     -fx-border-width: 1px;
     -fx-border-radius: 0px;
 }
+
+.grille-button.grille-erreur {
+    -fx-text-fill: #d32f2f; /* Texte rouge */
+    -fx-background-color: #ffebee; /* Fond rose pour alerter */
+    -fx-border-color: #d32f2f; /* Bordure rouge */
+}
+
 
 .grille-label {
     -fx-min-width: 40px;

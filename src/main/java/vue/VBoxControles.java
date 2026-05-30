@@ -9,14 +9,18 @@ import java.util.List;
 
 public class VBoxControles extends VBox {
     private GridPane gridPaneBoutons;
-
+    private Button btnValider;
+    private Button btnSolution;
 
     public VBoxControles(){
         gridPaneBoutons = new GridPane();
+        this.btnValider = new Button("Vaider");
+        this.btnSolution = new Button("Solution");
+
         this.getChildren().add(gridPaneBoutons);
 
         List<Integer> chiffres = new ArrayList<>();
-        for (int i=0; i<9; i++) { chiffres.add(i); }
+        for (int i=1; i<10; i++) { chiffres.add(i); }
 
         for (int x=0; x<3; x++){
             for (int y=0; y<3; y++){
@@ -29,8 +33,18 @@ public class VBoxControles extends VBox {
                 btn.setOnAction(event -> HBoxRoot.getControleur().ajouterNumero(numero));
             }
         }
-        Button btnValider = new Button("Valider");
         gridPaneBoutons.add(btnValider, 0, 3, 3, 1);
-        btnValider.setOnAction(event -> HBoxRoot.getControleur().valider());
+        gridPaneBoutons.add(btnSolution,4,3,3,1);
+        btnValider.setOnAction(event -> {
+            HBoxRoot.getControleur().lancerValidation();
+        });
+        btnSolution.setOnAction(event -> {
+            HBoxRoot.getControleur().afficherSolution();
+        });
+        ;
+
+    }
+    public Button getBtnValider() {
+        return this.btnValider; // Permet de récupérer le bouton pour changer son texte
     }
 }

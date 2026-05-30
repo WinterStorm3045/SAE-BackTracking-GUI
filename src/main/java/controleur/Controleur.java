@@ -30,7 +30,34 @@ public class Controleur {
         vueGrille.update(modeleGrille.getGrilleJoueur());
     }
 
-    public void valider(){
+    public void lancerValidation() {
+        // on récupère la grille passée dans le contrôleur
+        modele.Grille modeleGrille = HBoxRoot.getModeleGrille();
 
+        // on vérifie si la grille est completement remplie
+        if (!modeleGrille.estRemplie()) {
+            // si non, on change le bouton valider et on affiche grille incomplète
+            HBoxRoot.getControles().getBtnValider().setText("Grille incomplète !");
+            return;
+        }
+
+        // on remet le bouton valider normalement si la grille est pleine
+        HBoxRoot.getControles().getBtnValider().setText("Valider");
+
+        Integer[] solution = modeleGrille.getGrilleDepart(); // on recupere la grillr de depart
+        HBoxRoot.getVueGrille().valider(solution); // on lance la validation avec .valider
+    }
+    public void afficherSolution() {
+        modele.Grille modeleGrille = HBoxRoot.getModeleGrille(); // on recupere la grille
+        Integer[] solution = modeleGrille.getGrilleDepart(); // on met dans un tableau solution la grille de depart
+        Integer[] grilleJoueur = modeleGrille.getGrilleJoueur(); // on recupere la grille du joueur
+
+        // on remplit la solution dans la grille du joueur
+        for (int i = 0; i < 81; i++) {
+            grilleJoueur[i] = solution[i];
+        }
+
+        // on demande à la vue de se mettre à jour graphiquement
+        HBoxRoot.getVueGrille().update(grilleJoueur);
     }
 }
