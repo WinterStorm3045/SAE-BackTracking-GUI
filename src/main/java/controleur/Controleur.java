@@ -32,6 +32,7 @@ public class Controleur {
 
     public void valider(){
         Integer[] grilleJoueur = modeleGrille.getGrilleJoueur();
+        // Pr terminer la partie après avoir validé
         /*for (int i=0; i<81; i++){
             if (grilleJoueur[i] == null) return;
         }*/
